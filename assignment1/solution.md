@@ -28,7 +28,5 @@ Since there were no requirements on the accepted input alphabet, the implementat
 
 `task22.jar` contains the solution to the second part of this task.
 It has to be called with two arguments: `java -jar task21.jar transitionPath inputPath`.
-Output will be written to stdout so there is no `outputPath` option.
+Output will be written to `stdout` so there is no `outputPath` option.
 The implementation is pretty inefficient since it simply iterates over all suffixes of the input and matches against them.
-Could be improved by caching the results of `(state, input position)` pairs over all iterations, determining states that always reject to terminate early if possible and maybe add multithreading to match multiple suffixes in parallel...
-Optimizations not implemented because: Too lazy and not required.
