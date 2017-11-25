@@ -21,7 +21,6 @@
                                                  (get s1 (- i1 2))))
                                        (inc (get-in d [(- i1 2) (- i2 2)]))
                                        Double/POSITIVE_INFINITY)))))
-
                   (into [(apply vector-of :long (range c2))]
                         (map (partial vector-of :long) (range 1 c1)))
                   (for [i1 (range 1 c1), i2 (range 1 c2)] [i1 i2]))]
