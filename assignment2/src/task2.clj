@@ -27,5 +27,5 @@
     (get-in d [(dec c1) (dec c2)])))
 
 (defn -main
-  [s1 s2 & args]
+  [s1 s2]
   (println (damerau-levenshtein s1 s2)))

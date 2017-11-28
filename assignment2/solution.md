@@ -48,3 +48,11 @@
 **thames** | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 2/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19
 **the** | 1/21 | 1/21 | 2/21 | 1/21 | 1/21 | 1/21 | 1/21 | 1/21 | 2/21 | 1/21 | 1/21 | 1/21 | 1/21 | 1/21 | 2/21 | 1/21 | 1/21 | 1/21
 **western** | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 2/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19 | 1/19
+
+### 1.3. Kneser-Ney smoothing
+
+Kneser-Ney might yield better results for the given corpus at least in some cases.
+For example `a = (largest, in)` and `b = (largest, largest)` get the same probability using Add-1-smoothing.
+Using Kneser-Ney `a` would correctly be considered more likely than `b` because the word `in` appears in more contexts (i. e. it has more distinct preceding words) than the word `largest`.
+This can be considered as an improvement.
+To see whether the overall result improves, one would have to compute the complete bi-gram matrix though and check for regressions.

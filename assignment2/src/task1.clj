@@ -26,12 +26,12 @@
 (def word-count (frequencies (flatten sentences)))
 (def word-set (difference (into (sorted-set) (keys word-count))))
 
-(def bigrams (into (zipmap (for [w1 word-set, w2 word-set] [w1 w2])
-                           (repeat 0))
-                   (->> sentences
-                        (mapcat (partial partition 2 1))
-                        (map vec)
-                        (frequencies))))
+(def bigrams (->> sentences
+                  (mapcat (partial partition 2 1))
+                  (map vec)
+                  (frequencies)
+                  (into (zipmap (for [w1 word-set, w2 word-set] [w1 w2])
+                                (repeat 0)))))
 
 (def add-1-bigrams (into {} (map (fn [[[w1 w2 :as k] v]]
                                    [k (/ (if (or (= w1 s-end) (= w2 s-start))
