@@ -1,4 +1,4 @@
-# SNLP Assignment 1
+# SNLP Assignment 2
 #### Clemens Damke - 7011488
 
 ## 1. Smoothing
