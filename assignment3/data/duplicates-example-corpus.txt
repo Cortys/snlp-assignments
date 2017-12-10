@@ -1,0 +1,13 @@
+
+
+
+15 - 16   equal
+40 - 835  equal 
+864 - 865 dist 1
+347 - 844 dist 1
+397 - 398 dist 1
+58 - 849  equal 
+244 - 653 equal 
+519 - 544 equal
+307 - 475 dist 1 
+212 - 482 dist 1 
