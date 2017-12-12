@@ -1,5 +1,7 @@
-# SNLP Assignment 3
-#### Clemens Damke - 7011488
+<center>
+<h1>SNLP Assignment 3</h1>
+<h5>Clemens Damke - 7011488</h5>
+</center>
 
 ## 1. Na&iuml;ve Bayes classification
 
@@ -18,15 +20,14 @@ Using $\alpha = 1$ and $c_s := \text{spam}, c_n := \text{normal}$.
 	\hat{P}(\text{wallet} | c_s) &= \frac{2}{19} & \hat{P}(\text{wallet} | c_n) &= \frac{2}{12} \\
 	\hat{P}(\text{wood} | c_s) &= \frac{1}{19} & \hat{P}(\text{wood} | c_n) &= \frac{2}{12} \\
 	\hat{P}(c_s | d_4) &= \frac{2 \cdot 4 \cdot 2 \cdot 3 \cdot 1}{3 \cdot 19^4} \approx 0.000123 & \hat{P}(c_n | d_4) &= \frac{1 \cdot 1 \cdot 2 \cdot 1 \cdot 2}{3 \cdot 12^4} \approx 0.000064 \\
-	\hat{P}(c_s | d_5) &= \frac{2 \cdot 2 \cdot 3 \cdot 3 \cdot 2}{3 \cdot 19^4} \approx 0.000184 & \hat{P}(c_n | d_5) &= \frac{1 \cdot 2 \cdot 1 \cdot 2 \cdot 2}{3 \cdot 12^4} \approx 0.000129 \\
+	\hat{P}(c_s | d_5) &= \frac{2 \cdot 2 \cdot 3 \cdot 3 \cdot 2}{3 \cdot 19^4} \approx 0.000184 & \hat{P}(c_n | d_5) &= \frac{1 \cdot 2 \cdot 1 \cdot 2 \cdot 2}{3 \cdot 12^4} \approx 0.000129
 \end{aligned}\]\[
 	\implies c_{d_4} = c_s = \text{spam},\ c_{d_5} = c_s = \text{spam}
 \]
 
 ### 1.2. Different weights
 
-I tripled the title weight by counting each title word thrice.
-
+It was unclear to me what exactly was meant by tripling the weight. I chose to triple the title weight by counting each title word thrice. A word appearing in the title of a training sample thus has the same higher weight in the title and the text of test samples:
 \[\begin{aligned}
 	\hat{P}(\text{free} | c_s) &= \frac{\overbrace{3 \cdot 1}^{\text{title}} + \overbrace{1}^{\text{text}} + \alpha}{3 \cdot 4 + 7 + \alpha|V|} = \frac{5}{27} &
 	\hat{P}(\text{free} | c_n) &= \frac{\overbrace{3 \cdot 0}^{\text{title}} + \overbrace{0}^{\text{text}} + \alpha}{3 \cdot 2 + 2 + \alpha|V|}= \frac{1}{16} \\
@@ -40,7 +41,7 @@ I tripled the title weight by counting each title word thrice.
 	\hat{P}(c_s | d_4) &= \frac{2 \cdot 6 \cdot 2 \cdot 5 \cdot 1}{3 \cdot 27^4} \approx 0.000075 &
 	\hat{P}(c_n | d_4) &= \frac{1 \cdot 1 \cdot 4 \cdot 1 \cdot 4}{3 \cdot 16^4} \approx 0.000081 \\
 	\hat{P}(c_s | d_5) &= \frac{2 \cdot 2 \cdot 5 \cdot 5 \cdot 4}{3 \cdot 27^4} \approx 0.000251 &
-	\hat{P}(c_n | d_5) &= \frac{1 \cdot 4 \cdot 1 \cdot 2 \cdot 2}{3 \cdot 16^4} \approx 0.000081 \\
+	\hat{P}(c_n | d_5) &= \frac{1 \cdot 4 \cdot 1 \cdot 2 \cdot 2}{3 \cdot 16^4} \approx 0.000081
 \end{aligned}\]\[
 	\implies c_{d_4} = c_n = \text{normal},\ c_{d_5} = c_s = \text{spam}
 \]
