@@ -1,13 +1,12 @@
 (ns task2
-  (:require [clojure.java.io :refer [reader resource]]
+  (:require [clojure.java.io :refer [reader]]
             [clojure.data.csv :refer [read-csv]]
             [lambda-ml.core :as lml]
-            [lambda-ml.regression :as reg])
-  (:gen-class))
+            [lambda-ml.regression :as reg]))
 
-(def α 0.01)
+(def α 0.1)
 (def λ 0.1)
-(def i 200)
+(def i 500)
 
 (defn read-data
   [path]
@@ -21,7 +20,7 @@
 
 (defn classes
   [data]
-  (set (map last data)))
+  (set (map :y data)))
 
 (defn format-data
   [data class]
@@ -35,17 +34,20 @@
                       train-data))
 
 (defn log-models
-  [train-data]
+  [data]
   (let [classes (classes data)]
     (->> classes
-         (map (juxt identity (comp log-model
-                                   (partial format-data data))))
-         (into #{}))))
+         (pmap (juxt identity (comp log-model
+                                    (partial format-data data))))
+         (into {}))))
 
 (defn predict
-  [test-data models])
-
-(def data (read-data (resource "dataset.csv")))
-
-(defn -main
-  [path])
+  [data models]
+  (->> models
+       (map (fn [[class model]]
+              (map (partial hash-map class)
+                   (reg/regression-predict model data))))
+       (apply interleave)
+       (partition (count (keys models)))
+       (map (comp #(apply max-key % (keys models))
+                  (partial apply merge)))))

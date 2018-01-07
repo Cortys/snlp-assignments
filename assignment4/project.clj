@@ -5,10 +5,22 @@
                  [org.clojure/data.csv "0.1.4"]
                  [lambda-ml "0.1.0"]]
 
-  :profiles {:task2 {:main task2
-                     :aot [task2]
-                     :jar-name "task2-small.jar"
-                     :uberjar-name "task2.jar"
-                     :uberjar-exclusions [#"clojure/(test|pprint|inspector|reflect|repl|xml)/.*"]}}
+  :profiles {:dev {:source-paths ["dev" "src"]
+                   :dependencies [[proto-repl "0.3.1"]
+                                  [proto-repl-charts "0.3.1"]
+                                  [proto-repl-sayid "0.1.3"]]
+                   :repl-options {:init-ns user}}
 
-  :aliases {"run-task2" ["with-profile" "task2" "run"]})
+             :task2a {:main task2a
+                      :aot :all
+                      :jar-name "task2a-small.jar"
+                      :uberjar-name "task2a.jar"
+                      :uberjar-exclusions [#"clojure/(test|pprint|inspector|reflect|repl|xml)/.*"]}
+             :task2b {:main task2b
+                      :aot :all
+                      :jar-name "task2b-small.jar"
+                      :uberjar-name "task2b.jar"
+                      :uberjar-exclusions [#"clojure/(test|pprint|inspector|reflect|repl|xml)/.*"]}}
+
+  :aliases {"run-task2a" ["with-profile" "task2a" "run"]
+            "run-task2b" ["with-profile" "task2b" "run"]})
