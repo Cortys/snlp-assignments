@@ -57,4 +57,5 @@
         micro (/ micro (count folds))
         macro (/ macro (count folds))]
     (println (str "Micro-averaged F-measure: " (double micro)))
-    (println (str "Macro-averaged F-measure: " (double macro)))))
+    (println (str "Macro-averaged F-measure: " (double macro)))
+    (shutdown-agents)))

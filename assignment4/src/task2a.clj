@@ -8,4 +8,5 @@
         [train-data test-data] (split-at 650 data)
         models (log-models train-data)]
     (doseq [prediction (predict (map :x test-data) models)]
-      (println prediction))))
+      (println prediction))
+    (shutdown-agents)))
